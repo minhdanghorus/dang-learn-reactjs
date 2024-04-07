@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import YoutubeList from "./components/youtube/YoutubeList";
+import Toggle from "./components/toggle/Toggle";
 
 const App = () => {
   return (
     <div>
-      <YoutubeList />
+      <Toggle></Toggle>
     </div>
-  )
+  );
 };
 
 export default App;
