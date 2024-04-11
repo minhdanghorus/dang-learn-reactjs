@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <Button>Click me</Button>
-      <Button className="button--secondary">Click me</Button>
+      <Button secondary>Click me</Button>
     </div>
   );
 };
