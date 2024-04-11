@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Game from "./components/tictactoe/Game";
-import DoubleCounter from "./components/counter/DoubleCount";
+import Button from "./components/button/Button";
 
 const App = () => {
   return (
     <div>
-      <DoubleCounter />
+      <Button>Click me</Button>
+      <Button className="button--secondary">Click me</Button>
     </div>
   );
 };
