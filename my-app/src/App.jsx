@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Button from "./components/button/Button";
+import Card from "./components/card/Card";
+
 
 const App = () => {
   return (
     <div>
-      <Button>Click me</Button>
-      <Button secondary>Click me</Button>
+      <Card />
     </div>
   );
 };
