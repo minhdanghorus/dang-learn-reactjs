@@ -2,11 +2,12 @@ import React from "react";
 import "./App.css";
 import Card from "./components/card/Card";
 import CardList from "./components/card/CardList";
-
+import { GlobalStyles } from "./GlobalStyles";
 
 const App = () => {
   return (
     <div>
+      <GlobalStyles></GlobalStyles>
       <CardList>
         <Card></Card>
         <Card></Card>
