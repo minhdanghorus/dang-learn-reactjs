@@ -1,12 +1,20 @@
 import React from "react";
 import "./App.css";
 import Card from "./components/card/Card";
+import CardList from "./components/card/CardList";
 
 
 const App = () => {
   return (
     <div>
-      <Card />
+      <CardList>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+      </CardList>
     </div>
   );
 };
