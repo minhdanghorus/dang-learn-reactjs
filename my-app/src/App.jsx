@@ -29,6 +29,7 @@ const App = () => {
     <div>
       <CardList>
         <CardTailwind></CardTailwind>
+        <CardTailwind primary={true} fontSize="text-2xl"></CardTailwind>
       </CardList>
     </div>
   );
