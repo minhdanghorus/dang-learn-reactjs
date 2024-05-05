@@ -4,6 +4,7 @@ import "./App.css";
 // import Card2 from "./components/card/Card2";
 import CardTailwind from "./components/card/CardTailwind";
 import CardList from "./components/card/CardList";
+import Photos from "./components/photo/Photos";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -15,22 +16,8 @@ import CardList from "./components/card/CardList";
 
 const App = () => {
   return (
-    // <ThemeProvider theme={theme}>
-    //   <GlobalStyles></GlobalStyles>
-    //   <CardList>
-    //     <Card></Card>
-    //     <Card2 secondary></Card2>
-    //     <Card></Card>
-    //     <Card></Card>
-    //     <Card></Card>
-    //     <Card></Card>
-    //   </CardList>
-    // </ThemeProvider>
     <div>
-      <CardList>
-        <CardTailwind></CardTailwind>
-        <CardTailwind primary={true} fontSize="text-2xl"></CardTailwind>
-      </CardList>
+      <Photos></Photos>
     </div>
   );
 };
