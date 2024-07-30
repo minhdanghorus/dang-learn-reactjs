@@ -23,7 +23,8 @@ const App = () => {
       {/* <Photos></Photos> */}
       {/* <Counter></Counter> */}
       {/* <Timer></Timer> */}
-      <Header></Header>
+      {/* <Header></Header> */}
+      <Photos></Photos>
     </div>
   );
 };
