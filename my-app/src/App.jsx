@@ -6,6 +6,7 @@ import CardTailwind from "./components/card/CardTailwind";
 import CardList from "./components/card/CardList";
 import Photos from "./components/photo/Photos";
 import Counter from "./components/counter/Counter";
+import Header from "./components/Header";
 import Timer from "./components/Timer";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
@@ -21,7 +22,8 @@ const App = () => {
     <div>
       {/* <Photos></Photos> */}
       {/* <Counter></Counter> */}
-      <Timer></Timer>
+      {/* <Timer></Timer> */}
+      <Header></Header>
     </div>
   );
 };
