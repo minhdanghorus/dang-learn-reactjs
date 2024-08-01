@@ -9,6 +9,7 @@ import Counter from "./components/counter/Counter";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import HackerNews from "./components/news/HackerNews";
+import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -26,7 +27,8 @@ const App = () => {
       {/* <Timer></Timer> */}
       {/* <Header></Header> */}
       {/* <Photos></Photos> */}
-      <HackerNews></HackerNews>
+      {/* <HackerNews></HackerNews> */}
+      <HackerNewsWithReducer></HackerNewsWithReducer>
     </div>
   );
 };
