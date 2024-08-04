@@ -11,6 +11,7 @@ import Timer from "./components/Timer";
 import HackerNews from "./components/news/HackerNews";
 import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 import StopWatch from "./components/StopWatch";
+import Input from "./components/Input";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -31,7 +32,8 @@ const App = () => {
       {/* <Photos></Photos> */}
       {/* <HackerNews></HackerNews> */}
       {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
-      <StopWatch></StopWatch>
+      {/* <StopWatch></StopWatch> */}
+      <Input></Input>
     </div>
   );
 };
