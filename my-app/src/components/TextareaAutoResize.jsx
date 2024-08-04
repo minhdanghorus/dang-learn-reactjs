@@ -1,5 +1,5 @@
 import { set } from "lodash";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const TextareaAutoResize = () => {
     const [text, setText] = React.useState("");
@@ -12,7 +12,7 @@ const TextareaAutoResize = () => {
         setText(e.target.value);
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // get scrollHeight of textarea
         const scrollHeight = textareaRef.current.scrollHeight;
         console.log("scrollHeight: ", scrollHeight);
