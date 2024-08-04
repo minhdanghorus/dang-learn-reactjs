@@ -12,6 +12,7 @@ import HackerNews from "./components/news/HackerNews";
 import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 import StopWatch from "./components/StopWatch";
 import Input from "./components/Input";
+import TextareaAutoResize from "./components/TextareaAutoResize";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -33,7 +34,8 @@ const App = () => {
       {/* <HackerNews></HackerNews> */}
       {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
       {/* <StopWatch></StopWatch> */}
-      <Input></Input>
+      {/* <Input></Input> */}
+      <TextareaAutoResize></TextareaAutoResize>
     </div>
   );
 };
