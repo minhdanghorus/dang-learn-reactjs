@@ -13,6 +13,7 @@ import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 import StopWatch from "./components/StopWatch";
 import Input from "./components/Input";
 import TextareaAutoResize from "./components/TextareaAutoResize";
+import Dropdown from "./components/Dropdown";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -23,7 +24,6 @@ import TextareaAutoResize from "./components/TextareaAutoResize";
 // };
 
 const App = () => {
-
   return (
     <div>
       {/* <Photos></Photos> */}
@@ -35,7 +35,10 @@ const App = () => {
       {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
-      <TextareaAutoResize></TextareaAutoResize>
+      {/* <TextareaAutoResize></TextareaAutoResize> */}
+      <div className="p-5">
+        <Dropdown></Dropdown>
+      </div>
     </div>
   );
 };
