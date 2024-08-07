@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import axios from "axios";
 import lodash from "lodash";
 
@@ -12,14 +12,27 @@ const HackerNews = () => {
   const [url, setUrl] = React.useState(
     `https://hn.algolia.com/api/v1/search?query=${query}`
   );
+
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  });
+
   const handleFetchData = useRef({});
   handleFetchData.current = async () => {
     setLoading(true);
     try {
       const response = await axios.get(url);
-      console.log("response: ", response);
-      setHits(response.data?.hits || []);
-      setLoading(false);
+      setTimeout(() => {
+        if (isMounted.current) {
+          console.log("response: ", response);
+          setHits(response.data?.hits || []);
+          setLoading(false);
+        }
+      }, 3000);
     } catch (error) {
       console.log("error: ", error);
       setLoading(false);

@@ -25,6 +25,7 @@ import Blog from "./components/Blogs";
 // };
 
 const App = () => {
+  const [show, setShow] = React.useState(false);
   return (
     <div>
       {/* <Photos></Photos> */}
@@ -32,7 +33,6 @@ const App = () => {
       {/* <Timer></Timer> */}
       {/* <Header></Header> */}
       {/* <Photos></Photos> */}
-      {/* <HackerNews></HackerNews> */}
       {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
@@ -40,7 +40,9 @@ const App = () => {
       {/* <div className="p-5">
         <Dropdown></Dropdown>
       </div> */}
-      <Blog></Blog>
+      {/* <Blog></Blog> */}
+      <button onClick={() => setShow(!show)}>Toggle</button>
+      {show && <HackerNews></HackerNews>}
     </div>
   );
 };
