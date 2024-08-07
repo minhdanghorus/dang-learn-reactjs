@@ -14,6 +14,7 @@ import StopWatch from "./components/StopWatch";
 import Input from "./components/Input";
 import TextareaAutoResize from "./components/TextareaAutoResize";
 import Dropdown from "./components/Dropdown";
+import Blog from "./components/Blogs";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -36,9 +37,10 @@ const App = () => {
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
       {/* <TextareaAutoResize></TextareaAutoResize> */}
-      <div className="p-5">
+      {/* <div className="p-5">
         <Dropdown></Dropdown>
-      </div>
+      </div> */}
+      <Blog></Blog>
     </div>
   );
 };
