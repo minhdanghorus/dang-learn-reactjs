@@ -15,6 +15,7 @@ import Input from "./components/Input";
 import TextareaAutoResize from "./components/TextareaAutoResize";
 import Dropdown from "./components/Dropdown";
 import Blog from "./components/Blogs";
+import HackerNewsWithHook from "./components/news/HackerNewsWithHook";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -25,7 +26,7 @@ import Blog from "./components/Blogs";
 // };
 
 const App = () => {
-  const [show, setShow] = React.useState(false);
+  // const [show, setShow] = React.useState(false);
   return (
     <div>
       {/* <Photos></Photos> */}
@@ -41,8 +42,9 @@ const App = () => {
         <Dropdown></Dropdown>
       </div> */}
       {/* <Blog></Blog> */}
-      <button onClick={() => setShow(!show)}>Toggle</button>
-      {show && <HackerNews></HackerNews>}
+      {/* <button onClick={() => setShow(!show)}>Toggle</button>
+      {show && <HackerNews></HackerNews>} */}
+      <HackerNewsWithHook></HackerNewsWithHook>
     </div>
   );
 };
