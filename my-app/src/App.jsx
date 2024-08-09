@@ -38,13 +38,13 @@ const App = () => {
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
       {/* <TextareaAutoResize></TextareaAutoResize> */}
-      {/* <div className="p-5">
+      <div className="p-5">
         <Dropdown></Dropdown>
-      </div> */}
+      </div>
       {/* <Blog></Blog> */}
       {/* <button onClick={() => setShow(!show)}>Toggle</button>
       {show && <HackerNews></HackerNews>} */}
-      <HackerNewsWithHook></HackerNewsWithHook>
+      {/* <HackerNewsWithHook></HackerNewsWithHook> */}
     </div>
   );
 };
