@@ -1,21 +1,21 @@
 import React from "react";
 
-export function useClickOutSide() {
+export function useClickOutSide(dom) {
   const [show, setShow] = React.useState(false);
   const node = React.useRef(null);
 
   React.useEffect(() => {
-    const handleClickOutDropdown = (e) => {
+    const handleClickOutSide = (e) => {
       console.log("e.target", e.target);
-      if (node.current && !node.current.contains(e.target)) {
+      if (node.current && !node.current.contains(e.target) && !e.target.matches(dom)) {
         setShow(false);
       }
     };
 
-    document.addEventListener("click", handleClickOutDropdown);
+    document.addEventListener("click", handleClickOutSide);
 
     return () => {
-      document.removeEventListener("click", handleClickOutDropdown);
+      document.removeEventListener("click", handleClickOutSide);
     };
   }, []);
 
