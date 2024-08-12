@@ -4,6 +4,7 @@ const Form = () => {
   const [fullname, setFullname] = React.useState({
     fullname: "",
     email: "",
+    hobby: false,
   });
   // const [message, setMessage] = React.useState("");
   // const [country, setCountry] = React.useState("");
@@ -19,9 +20,10 @@ const Form = () => {
   // };
 
   const handleInputchange = (e) => {
+    const type = e.target.type;
     setFullname({
       ...fullname,
-      [e.target.name]: e.target.value,
+      [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
     });
   };
 
@@ -42,6 +44,7 @@ const Form = () => {
           placeholder="Enter your email"
           onChange={handleInputchange}
         />
+        <input type="checkbox" name="hobby" onChange={handleInputchange} />
       </div>
       {/* {message}
       <textarea
