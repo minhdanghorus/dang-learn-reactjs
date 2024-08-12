@@ -11,13 +11,14 @@ import Timer from "./components/Timer";
 import HackerNews from "./components/news/HackerNews";
 import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 import StopWatch from "./components/StopWatch";
-import Input from "./components/Input";
+// import Input from "./components/Input";
 import TextareaAutoResize from "./components/TextareaAutoResize";
 import Dropdown from "./components/Dropdown";
 import Blog from "./components/Blogs";
 import HackerNewsWithHook from "./components/news/HackerNewsWithHook";
 import SidebarMenu from "./components/SidebarMenu";
 import { useClickOutSide } from "./hooks/useClickOutSide";
+import Input from "./components/form/Input";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -29,7 +30,7 @@ import { useClickOutSide } from "./hooks/useClickOutSide";
 
 const App = () => {
   // const [show, setShow] = React.useState(false);
-  const {node, show, setShow } = useClickOutSide("button");
+  // const {node, show, setShow } = useClickOutSide("button");
   return (
     <div>
       {/* <Photos></Photos> */}
@@ -41,15 +42,16 @@ const App = () => {
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
       {/* <TextareaAutoResize></TextareaAutoResize> */}
-      <button className=" inline-block m-3 p-3 rounded-lg text-white bg-green-400 cursor-pointer" onClick={() => {setShow(!show)}}>Show menu</button>
+      {/* <button className=" inline-block m-3 p-3 rounded-lg text-white bg-green-400 cursor-pointer" onClick={() => {setShow(!show)}}>Show menu</button>
       <div className="p-5">
         <Dropdown></Dropdown>
-      </div>
+      </div> */}
       {/* <Blog></Blog> */}
       {/* <button onClick={() => setShow(!show)}>Toggle</button>
       {show && <HackerNews></HackerNews>} */}
       {/* <HackerNewsWithHook></HackerNewsWithHook> */}
-      <SidebarMenu show={show} ref={node}></SidebarMenu>
+      {/* <SidebarMenu show={show} ref={node}></SidebarMenu> */}
+      <Input></Input>
     </div>
   );
 };
