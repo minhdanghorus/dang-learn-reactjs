@@ -1,11 +1,12 @@
 import React from "react";
+import userHandleChange from "../../hooks/userHandleChange";
 
 const Form = () => {
-  const [fullname, setFullname] = React.useState({
-    fullname: "",
-    email: "",
-    hobby: false,
-  });
+  // const [fullname, setFullname] = React.useState({
+  //   fullname: "",
+  //   email: "",
+  //   hobby: false,
+  // });
   // const [message, setMessage] = React.useState("");
   // const [country, setCountry] = React.useState("");
 
@@ -19,13 +20,20 @@ const Form = () => {
   //   setCountry(e.target.value);
   // };
 
-  const handleInputchange = (e) => {
-    const type = e.target.type;
-    setFullname({
-      ...fullname,
-      [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
-    });
-  };
+  // const handleInputchange = (e) => {
+  //   const type = e.target.type;
+  //   setFullname({
+  //     ...fullname,
+  //     [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
+  //   });
+  // };
+  const {values, handleChange} = userHandleChange({
+    fullname: "",
+    email: "",
+    hobby: false,
+  });
+  console.log("values: ", values);
+  
 
   return (
     <div className=" p-5">
@@ -35,16 +43,16 @@ const Form = () => {
           name="fullname"
           className=" w-full max-w-[300px] p-5 border border-gray-300 rounded-lg"
           placeholder="Enter your name"
-          onChange={handleInputchange}
+          onChange={handleChange}
         />
         <input
           type="text"
           name="email"
           className=" w-full max-w-[300px] p-5 border border-gray-300 rounded-lg"
           placeholder="Enter your email"
-          onChange={handleInputchange}
+          onChange={handleChange}
         />
-        <input type="checkbox" name="hobby" onChange={handleInputchange} />
+        <input type="checkbox" name="hobby" onChange={handleChange} />
       </div>
       {/* {message}
       <textarea
