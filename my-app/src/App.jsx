@@ -19,6 +19,7 @@ import HackerNewsWithHook from "./components/news/HackerNewsWithHook";
 import SidebarMenu from "./components/SidebarMenu";
 import { useClickOutSide } from "./hooks/useClickOutSide";
 import Form from "./components/form/Form";
+import MovieSearchApp from "./components/MovieSearchApp";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -51,7 +52,8 @@ const App = () => {
       {show && <HackerNews></HackerNews>} */}
       {/* <HackerNewsWithHook></HackerNewsWithHook> */}
       {/* <SidebarMenu show={show} ref={node}></SidebarMenu> */}
-      <Form></Form>
+      {/* <Form></Form> */}
+      <MovieSearchApp></MovieSearchApp>
     </div>
   );
 };

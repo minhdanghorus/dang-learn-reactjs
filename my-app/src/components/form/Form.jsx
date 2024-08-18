@@ -27,24 +27,38 @@ const Form = () => {
   //     [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
   //   });
   // };
-  const {values, handleChange} = userHandleChange({
+  const { values, handleChange } = userHandleChange({
     fullname: "",
     email: "",
     hobby: false,
   });
-  console.log("values: ", values);
-  
 
+  const [nameError, setNameError] = React.useState("");
+  const handleSubmitForm = (e) => {
+    // Ngăn chặn reload mặc định của form khi submit
+    e.preventDefault();
+    if (!values.fullname) {
+      setNameError("Your fullname is empty");
+    }
+    else
+    {
+      setNameError("");
+    }
+  };
+  // console.log("values: ", values);
   return (
     <div className=" p-5">
-      <div className="flex gap-x-5">
-        <input
-          type="text"
-          name="fullname"
-          className=" w-full max-w-[300px] p-5 border border-gray-300 rounded-lg"
-          placeholder="Enter your name"
-          onChange={handleChange}
-        />
+      <form className="flex gap-x-5" onSubmit={handleSubmitForm}>
+        <div className=" flex flex-col gap-y-3">
+          <input
+            type="text"
+            name="fullname"
+            className=" w-full max-w-[300px] p-5 border border-gray-300 rounded-lg"
+            placeholder="Enter your name"
+            onChange={handleChange}
+          />
+          {nameError}
+        </div>
         <input
           type="text"
           name="email"
@@ -52,8 +66,14 @@ const Form = () => {
           placeholder="Enter your email"
           onChange={handleChange}
         />
-        <input type="checkbox" name="hobby" onChange={handleChange} />
-      </div>
+        {/* <input type="checkbox" name="hobby" onChange={handleChange} /> */}
+        <button
+          type="submit"
+          className=" p-3 rounded-lg text-white bg-blue-500"
+        >
+          Submit
+        </button>
+      </form>
       {/* {message}
       <textarea
         name="message"
