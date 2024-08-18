@@ -1,19 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { set } from "lodash";
+
+//https://developer.themoviedb.org/reference/intro/getting-started
 
 //https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=cd274f8584c2f2d792eea93ffe4a8a94
 
+/**
+ *
+adult: false
+backdrop_path: "/1dQOKOn4VhGPckO9S4yzOlKc12N.jpg"
+genre_ids: [53]
+id: 114785
+original_language: "fr"
+original_title: "Le Tigre aime la chair fraîche"
+overview: "A Turkish ambassador arrives in Paris to sign an important trade agreement, allowing Turkey to buy a sophisticated new war plane from France. Immediately he is the target of an assassin, and a special agent is assigned to protect him."
+popularity: 1.4
+poster_path: "/8rXOIQmdXMMXcDtvrs5O74BUICP.jpg"
+release_date: "1964-11-18"
+title: "Code Name: Tiger"
+video: false
+vote_average: 4.6
+vote_count: 4
+Image API: https://image.tmdb.org/t/p/original
+ */
+
 const MovieSearchApp = () => {
   const api_key = "cd274f8584c2f2d792eea93ffe4a8a94";
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
-    axios
-      .get(
+    async function fetchData() {
+      const response = await axios.get(
         "https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=" +
           api_key
-      )
-      .then((response) => {
-        console.log(response.data);
-      });
+      );
+      console.log(response);
+      if (response?.data?.results) {
+        setMovies(response.data.results);
+      }
+    }
+    fetchData();
   }, []);
   return (
     <div className=" p-10">
@@ -24,35 +50,32 @@ const MovieSearchApp = () => {
           placeholder="Search movie..."
         />
       </div>
-      <div className=" flex gap-10">
-        <MovieItem />
-        <MovieItem />
-        <MovieItem />
+      <div className="grid grid-cols-3 gap-10">
+        {movies.length > 0 &&
+          movies.map((item, index) => (
+            <MovieItem key={item.id} data={item}></MovieItem>
+          ))}
       </div>
     </div>
   );
 };
 
-const MovieItem = () => {
+const MovieItem = ({ data }) => {
+  console.log("props: ", data);
   return (
-    <div className=" bg-white p-3 rounded-2xl shadow-sm">
+    <div className=" bg-white p-3 rounded-2xl shadow-sm flex flex-col">
       <div className="h-[297px]">
         <img
-          src="https://images.unsplash.com/photo-1719937206491-ed673f64be1f?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
           alt=""
           className=" w-full h-full object-cover rounded-lg "
-        />
+        ></img>
       </div>
-      <div className="p-7">
-        <h3 className="text-lg text-black font-semibold mb-4">
-          Hotel Transylvania: Puppy!
-        </h3>
-        <p className="text-[#999] text-sm mb-6">
-          The residents of Hotel Transylvania find their world turned
-          upside-down when youngster Dennis gets a surprise monster-sized pet.
-        </p>
-        <div className="flex items-center gap-x-3">
-        <svg
+      <div className="p-7 flex-1 flex flex-col">
+        <h3 className="text-lg text-black font-semibold mb-4 !leading-loose">{data.title}</h3>
+        <p className="text-[#999] text-sm mb-6">{data.overview}</p>
+        <div className="flex items-center gap-x-3 mt-auto">
+          <svg
             width="16"
             height="15"
             viewBox="0 0 16 15"
@@ -65,7 +88,9 @@ const MovieItem = () => {
               strokeWidth="1.5"
             />
           </svg>
-          <span className="text-sm font-semibold text-[#333]">6.4</span>
+          <span className="text-sm font-semibold text-[#333]">
+            {data.vote_average}
+          </span>
         </div>
       </div>
     </div>
