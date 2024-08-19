@@ -28,11 +28,11 @@ Image API: https://image.tmdb.org/t/p/original
 const MovieSearchApp = () => {
   const api_key = "cd274f8584c2f2d792eea93ffe4a8a94";
   const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState("");
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=" +
-          api_key
+        `https://api.themoviedb.org/3/search/movie?query='${query}'&api_key=${api_key}`
       );
       console.log(response);
       if (response?.data?.results) {
@@ -40,7 +40,7 @@ const MovieSearchApp = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [query]);
   return (
     <div className=" p-10">
       <div className=" w-full max-w-[500px] mx-auto mb-10">
@@ -48,6 +48,7 @@ const MovieSearchApp = () => {
           type="text"
           className="w-full p-5 rounded-lg border border-purple-500 shadow-[0px_0px_0px_3px_rgba(125,_106,_255,_0.2)]"
           placeholder="Search movie..."
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       <div className="grid grid-cols-3 gap-10">
