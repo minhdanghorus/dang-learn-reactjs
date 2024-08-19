@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { set } from "lodash";
-
+import useDebounce from "../hooks/useDebounce";
 //https://developer.themoviedb.org/reference/intro/getting-started
 
 //https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=cd274f8584c2f2d792eea93ffe4a8a94
@@ -29,10 +29,11 @@ const MovieSearchApp = () => {
   const api_key = "cd274f8584c2f2d792eea93ffe4a8a94";
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
+  const queryDebounce = useDebounce(query, 1000);
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query='${query}'&api_key=${api_key}`
+        `https://api.themoviedb.org/3/search/movie?query='${queryDebounce}'&api_key=${api_key}`
       );
       console.log(response);
       if (response?.data?.results) {
@@ -40,7 +41,7 @@ const MovieSearchApp = () => {
       }
     }
     fetchData();
-  }, [query]);
+  }, [queryDebounce]);
   return (
     <div className=" p-10">
       <div className=" w-full max-w-[500px] mx-auto mb-10">
