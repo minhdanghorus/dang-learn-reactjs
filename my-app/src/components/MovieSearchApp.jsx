@@ -30,14 +30,17 @@ const MovieSearchApp = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const queryDebounce = useDebounce(query, 1000);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?query='${queryDebounce}'&api_key=${api_key}`
       );
       console.log(response);
       if (response?.data?.results) {
         setMovies(response.data.results);
+        setLoading(false);
       }
     }
     fetchData();
@@ -52,8 +55,9 @@ const MovieSearchApp = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
+      {loading && <p>Loading...</p>}
       <div className="grid grid-cols-3 gap-10">
-        {movies.length > 0 &&
+        {!loading && movies.length > 0 &&
           movies.map((item, index) => (
             <MovieItem key={item.id} data={item}></MovieItem>
           ))}
