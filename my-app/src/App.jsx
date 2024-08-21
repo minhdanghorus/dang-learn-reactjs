@@ -20,6 +20,7 @@ import SidebarMenu from "./components/SidebarMenu";
 import { useClickOutSide } from "./hooks/useClickOutSide";
 import Form from "./components/form/Form";
 import MovieSearchApp from "./components/MovieSearchApp";
+import SignUpForm from "./components/form/SignUpForm";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -53,7 +54,8 @@ const App = () => {
       {/* <HackerNewsWithHook></HackerNewsWithHook> */}
       {/* <SidebarMenu show={show} ref={node}></SidebarMenu> */}
       {/* <Form></Form> */}
-      <MovieSearchApp></MovieSearchApp>
+      {/* <MovieSearchApp></MovieSearchApp> */}
+      <SignUpForm></SignUpForm>
     </div>
   );
 };
