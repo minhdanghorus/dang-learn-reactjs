@@ -22,6 +22,7 @@ import Form from "./components/form/Form";
 import MovieSearchApp from "./components/MovieSearchApp";
 import SignUpForm from "./components/form/SignUpForm";
 import SignUpFormV2 from "./components/form/SignUpFormV2";
+import SignUpFormFinal from "./components/form/SignUpFormFinal";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -57,7 +58,8 @@ const App = () => {
       {/* <Form></Form> */}
       {/* <MovieSearchApp></MovieSearchApp> */}
       {/* <SignUpForm></SignUpForm> */}
-      <SignUpFormV2></SignUpFormV2>
+      {/* <SignUpFormV2></SignUpFormV2> */}
+      <SignUpFormFinal></SignUpFormFinal>
     </div>
   );
 };
