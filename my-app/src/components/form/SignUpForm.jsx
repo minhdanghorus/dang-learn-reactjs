@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const SignUpForm = () => {
   const validate = (values) => {
@@ -27,6 +28,14 @@ const SignUpForm = () => {
       lastName: "",
     },
     validate,
+    // validationSchema: Yup.object({
+    //   firstName: Yup.string()
+    //     .max(15, "Must be 15 characters or less")
+    //     .required("Required"),
+    //   lastName: Yup.string()
+    //     .max(20, "Must be 20 characters or less")
+    //     .required("Required"),
+    // }),
     onSubmit: (values) => {
       console.log(values);
     }
@@ -45,8 +54,9 @@ const SignUpForm = () => {
           className="p-4 rounded-md border border-gray-100"
           value={formik.values.firstName}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        {formik.errors.firstName ? <div className=" text-sm text-red-500 ">{formik.errors.firstName}</div> : null}
+        {formik.touched.firstName && formik.errors.firstName ? <div className=" text-sm text-red-500 ">{formik.errors.firstName}</div> : null}
         <label htmlFor="lastName">Lastname</label>
         <input
           type="text"
@@ -56,8 +66,9 @@ const SignUpForm = () => {
           className="p-4 rounded-md border border-gray-100"
           value={formik.values.lastName}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        {formik.errors.lastName ? <div className=" text-sm text-red-500 ">{formik.errors.lastName}</div> : null}
+        {formik.touched.lastName && formik.errors.lastName ? <div className=" text-sm text-red-500 ">{formik.errors.lastName}</div> : null}
       </div>
       <div>
         <button type="submit" className=" w-full p-4 bg-blue-600 text-white font-semibold rounded-lg">Submit</button>
