@@ -26,7 +26,7 @@ const SignUpFormV2 = () => {
       }}
     >
       <Form className="p-10 w-full max-w-[500px] mx-auto">
-        <div className="flex flex-col gap-2 mb-5">
+        {/* <div className="flex flex-col gap-2 mb-5">
           <label htmlFor="firstName">Firstname</label>
           <Field
             type="text"
@@ -34,12 +34,17 @@ const SignUpFormV2 = () => {
             className="p-4 rounded-md border border-gray-100"
             name="firstName"
           ></Field>
-        </div>
+        </div> */}
+        <MyInput
+          label="First name"
+          name="firstName"
+          placeholder="Enter your first name"
+        ></MyInput>
         <div className="flex flex-col gap-2 mb-5">
           <div className="text-sm text-red-500">
             <ErrorMessage name="firstName" />
           </div>
-          <label htmlFor="lastName">Lastname</label>
+          <label htmlFor="lastName">Last name</label>
           <Field
             type="text"
             name="lastName"
@@ -110,6 +115,20 @@ const SignUpFormV2 = () => {
         </div>
       </Form>
     </Formik>
+  );
+};
+
+const MyInput = ({ label, ...props }) => {
+  return (
+    <div className="flex flex-col gap-2 mb-5">
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <input
+        type="text"
+        className="p-4 rounded-md border border-gray-100"
+        {...props}
+      />
+      <div className="text-sm text-red-500"></div>
+    </div>
   );
 };
 
