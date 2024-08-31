@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik, Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from "yup";
 
-const SignUpFormV2 = () => {
+const SignUpFormFinal = () => {
   return (
     <Formik
       initialValues={{
@@ -165,4 +165,4 @@ const MyCheckbox = ({ children, ...props }) => {
   );
 };
 
-export default SignUpFormV2;
+export default SignUpFormFinal;

@@ -1,0 +1,71 @@
+import React from "react";
+const SignUpFormHook = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="p-10 w-full max-w-[500px] mx-auto">
+      <div className="flex flex-col gap-2 mb-5">
+        <label htmlFor="firstName">First name</label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="Enter your first name"
+          className="p-4 rounded-md border border-gray-100"
+        />
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <label htmlFor="firstName">Last name</label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Enter your last name"
+          className="p-4 rounded-md border border-gray-100"
+        />
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your Email Address"
+          className="p-4 rounded-md border border-gray-100"
+        />
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <label htmlFor="intro">Intro yourself</label>
+        <textarea
+          id="intro"
+          placeholder="Enter your introduce"
+          className="p-4 rounded-md border border-gray-100"
+        ></textarea>
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <label htmlFor="job">Select your job</label>
+        <select id="job" className="p-4 rounded-md border border-gray-100">
+          <option value="designer">Designer</option>
+          <option value="developer">Developer</option>
+          <option value="tester">Tester</option>
+        </select>
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <label className="flex items-center gap-2 mb-5">
+          <input type="checkbox" id="term" />
+          <label htmlFor="term">I accept the terms and conditions</label>
+        </label>
+      </div>
+      <div>
+        <button
+          type="submit"
+          className=" w-full p-4 bg-blue-600 text-white font-semibold rounded-lg"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default SignUpFormHook;
