@@ -1,12 +1,16 @@
 import React from "react";
+import { useForm } from "react-hook-form"
+
 const SignUpFormHook = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  };
+
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="p-10 w-full max-w-[500px] mx-auto">
+    <form onSubmit={handleSubmit(onSubmit)} className="p-10 w-full max-w-[500px] mx-auto">
       <div className="flex flex-col gap-2 mb-5">
         <label htmlFor="firstName">First name</label>
         <input
@@ -14,6 +18,7 @@ const SignUpFormHook = () => {
           id="firstName"
           placeholder="Enter your first name"
           className="p-4 rounded-md border border-gray-100"
+          {...register("firstName")}
         />
       </div>
       <div className="flex flex-col gap-2 mb-5">
@@ -23,6 +28,7 @@ const SignUpFormHook = () => {
           id="lastName"
           placeholder="Enter your last name"
           className="p-4 rounded-md border border-gray-100"
+          {...register("lastName")}
         />
       </div>
       <div className="flex flex-col gap-2 mb-5">
@@ -32,6 +38,7 @@ const SignUpFormHook = () => {
           id="email"
           placeholder="Enter your Email Address"
           className="p-4 rounded-md border border-gray-100"
+          {...register("email")}
         />
       </div>
       <div className="flex flex-col gap-2 mb-5">
