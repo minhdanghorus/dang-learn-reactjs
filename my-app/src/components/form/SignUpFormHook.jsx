@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form"
 
 const SignUpFormHook = () => {
 
-  const { register, handleSubmit } = useForm();
-
+  const { register, handleSubmit, formState: {errors} } = useForm();
+  console.log("errors: ", errors);
   const onSubmit = (data) => {
     console.log(data);
   }
@@ -18,17 +18,28 @@ const SignUpFormHook = () => {
           id="firstName"
           placeholder="Enter your first name"
           className="p-4 rounded-md border border-gray-100"
-          {...register("firstName")}
+          {...register("firstName", {
+            required: true,
+            maxLength: 15,
+          })}
         />
+        {
+          errors.firstName && errors.firstName.type === "required" && <div className="text-red-500 text-sm">This field is required</div>
+        }
+        {
+          errors.firstName && errors.firstName.type === "maxLength" && <div className="text-red-500 text-sm">Must be 15 characters or less</div>
+        }
       </div>
       <div className="flex flex-col gap-2 mb-5">
-        <label htmlFor="firstName">Last name</label>
+        <label htmlFor="lastName">Last name</label>
         <input
           type="text"
           id="lastName"
           placeholder="Enter your last name"
           className="p-4 rounded-md border border-gray-100"
-          {...register("lastName")}
+          {...register("lastName", {
+            
+          })}
         />
       </div>
       <div className="flex flex-col gap-2 mb-5">
