@@ -1,16 +1,36 @@
 import React from "react";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schemaValidation = yup
+  .object({
+    firstName: yup
+      .string()
+      .required("This field is required")
+      .max(15, "Must be 15 characters or less"),
+    lastName: yup.string().required("This field is required"),
+  })
+  .required();
 
 const SignUpFormHook = () => {
-
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schemaValidation),
+  });
   console.log("errors: ", errors);
   const onSubmit = (data) => {
     console.log(data);
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-10 w-full max-w-[500px] mx-auto">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="p-10 w-full max-w-[500px] mx-auto"
+    >
       <div className="flex flex-col gap-2 mb-5">
         <label htmlFor="firstName">First name</label>
         <input
@@ -18,17 +38,23 @@ const SignUpFormHook = () => {
           id="firstName"
           placeholder="Enter your first name"
           className="p-4 rounded-md border border-gray-100"
-          {...register("firstName", {
-            required: true,
-            maxLength: 15,
-          })}
+          // {...register("firstName", {
+          //   required: true,
+          //   maxLength: 15,
+          // })}
+          {...register("firstName")}
         />
-        {
-          errors.firstName && errors.firstName.type === "required" && <div className="text-red-500 text-sm">This field is required</div>
-        }
-        {
-          errors.firstName && errors.firstName.type === "maxLength" && <div className="text-red-500 text-sm">Must be 15 characters or less</div>
-        }
+        {/* {errors.firstName && errors.firstName.type === "required" && (
+          <div className="text-red-500 text-sm">This field is required</div>
+        )}
+        {errors.firstName && errors.firstName.type === "maxLength" && (
+          <div className="text-red-500 text-sm">
+            Must be 15 characters or less
+          </div>
+        )} */}
+        {errors?.firstName?.message && (
+          <div className="text-red-500 text-sm">{errors.firstName.message}</div>
+        )}
       </div>
       <div className="flex flex-col gap-2 mb-5">
         <label htmlFor="lastName">Last name</label>
@@ -37,9 +63,7 @@ const SignUpFormHook = () => {
           id="lastName"
           placeholder="Enter your last name"
           className="p-4 rounded-md border border-gray-100"
-          {...register("lastName", {
-            
-          })}
+          {...register("lastName")}
         />
       </div>
       <div className="flex flex-col gap-2 mb-5">
