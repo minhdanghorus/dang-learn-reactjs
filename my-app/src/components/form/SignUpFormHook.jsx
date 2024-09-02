@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
 
 const schemaValidation = yup
   .object({
@@ -17,18 +18,29 @@ const SignUpFormHook = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting, isValid, isDirty, dirtyFields },
   } = useForm({
     resolver: yupResolver(schemaValidation),
+    mode: "onChange",
   });
   console.log("errors: ", errors);
-  const onSubmit = (data) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-        console.log("data: ", data);
-      }, 5000);
-    });
+  console.log("isDirty: ", isDirty);
+  console.log("dirtyFields: ", dirtyFields);
+  const onSubmit = async (data) => {
+    if (isValid) {
+      console.log("send data to backend: ", data);
+    }
+    // const response = await axios.get(
+    //   "https://jsonplaceholder.typicode.com/posts"
+    // )
+    // console.log("response: ", response);
+
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //     console.log("data: ", data);
+    //   }, 5000);
+    // });
   };
 
   return (
