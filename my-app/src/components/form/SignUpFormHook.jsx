@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,8 +20,10 @@ const SignUpFormHook = () => {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting, isValid, isDirty, dirtyFields },
-    reset,
-    resetField,
+    // reset,
+    // resetField,
+    setFocus,
+    setValue,
   } = useForm({
     resolver: yupResolver(schemaValidation),
     mode: "onChange",
@@ -29,6 +31,9 @@ const SignUpFormHook = () => {
 
   const watchShowAge = watch("showAge", false);
 
+  useEffect(() => {
+    setFocus("firstName");
+  }, [setFocus]);
   console.log("errors: ", errors);
   console.log("isDirty: ", isDirty);
   console.log("dirtyFields: ", dirtyFields);
@@ -55,7 +60,13 @@ const SignUpFormHook = () => {
     //   showAge: false,
     // });
 
-    resetField("firstName");
+    // resetField("firstName");
+  };
+
+  const handleSetDemoData = () => {
+    setValue("firstName", "Đăng");
+    setValue("lastName", "Nguyễn");
+    setValue("email", "dang@gmail.com");
   };
 
   return (
@@ -150,6 +161,7 @@ const SignUpFormHook = () => {
             "Submit"
           )}
         </button>
+        <button className=" p-3 bg-green-500 text-white mt-2 rounded-lg" onClick={handleSetDemoData}>Demo Data</button>
       </div>
     </form>
   );
