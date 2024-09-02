@@ -20,6 +20,8 @@ const SignUpFormHook = () => {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting, isValid, isDirty, dirtyFields },
+    reset,
+    resetField,
   } = useForm({
     resolver: yupResolver(schemaValidation),
     mode: "onChange",
@@ -45,6 +47,15 @@ const SignUpFormHook = () => {
     //     console.log("data: ", data);
     //   }, 5000);
     // });
+
+    // reset({
+    //   firstName: "",
+    //   lastName: "",
+    //   email: "",
+    //   showAge: false,
+    // });
+
+    resetField("firstName");
   };
 
   return (
