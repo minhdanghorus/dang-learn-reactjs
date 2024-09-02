@@ -18,11 +18,15 @@ const SignUpFormHook = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting, isValid, isDirty, dirtyFields },
   } = useForm({
     resolver: yupResolver(schemaValidation),
     mode: "onChange",
   });
+
+  const watchShowAge = watch("showAge", false);
+
   console.log("errors: ", errors);
   console.log("isDirty: ", isDirty);
   console.log("dirtyFields: ", dirtyFields);
@@ -95,6 +99,12 @@ const SignUpFormHook = () => {
           className="p-4 rounded-md border border-gray-100"
           {...register("email")}
         />
+      </div>
+      <div className="flex flex-col gap-2 mb-5">
+        <input type="checkbox" {...register("showAge")} />
+        {watchShowAge && (
+          <input type="number" placeholder="Please enter your age" />
+        )}
       </div>
       <div className="flex flex-col gap-2 mb-5">
         <label htmlFor="intro">Intro yourself</label>
