@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
@@ -24,6 +24,7 @@ const SignUpFormHook = () => {
     // resetField,
     setFocus,
     setValue,
+    control,
   } = useForm({
     resolver: yupResolver(schemaValidation),
     mode: "onChange",
@@ -114,13 +115,20 @@ const SignUpFormHook = () => {
       </div>
       <div className="flex flex-col gap-2 mb-5">
         <label htmlFor="email">Email</label>
-        <input
+        <MyInput
+          name="email"
+          placeholder="Enter your Email Address"
+          id="email"
+          type="email"
+          control={control}
+        />
+        {/* <input
           type="email"
           id="email"
           placeholder="Enter your Email Address"
           className="p-4 rounded-md border border-gray-100"
           {...register("email")}
-        />
+        /> */}
       </div>
       <div className="flex flex-col gap-2 mb-5">
         <input type="checkbox" {...register("showAge")} />
@@ -161,9 +169,27 @@ const SignUpFormHook = () => {
             "Submit"
           )}
         </button>
-        <button className=" p-3 bg-green-500 text-white mt-2 rounded-lg" onClick={handleSetDemoData}>Demo Data</button>
+        <button
+          className=" p-3 bg-green-500 text-white mt-2 rounded-lg"
+          onClick={handleSetDemoData}
+        >
+          Demo Data
+        </button>
       </div>
     </form>
+  );
+};
+
+const MyInput = ({ control, ...props }) => {
+  return (
+    <Controller
+      name={props.name}
+      control={control}
+      defaultValue={""}
+      render={({ field }) => (
+        <input className="p-4 rounded-md border border-gray-100" {...field} {...props}/>
+      )}
+    ></Controller>
   );
 };
 
