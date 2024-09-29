@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import "./App.css";
 // import Card from "./components/card/Card";
 // import Card2 from "./components/card/Card2";
@@ -24,6 +24,7 @@ import SignUpForm from "./components/form/SignUpForm";
 import SignUpFormV2 from "./components/form/SignUpFormV2";
 import SignUpFormFinal from "./components/form/SignUpFormFinal";
 import SignUpFormHook from "./components/form/SignUpFormHook";
+import Modal from "./components/modal/Modal";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -37,32 +38,43 @@ const App = () => {
   // const [show, setShow] = React.useState(false);
   // const {node, show, setShow } = useClickOutSide("button");
   return (
-    <div>
-      {/* <Photos></Photos> */}
-      {/* <Counter></Counter> */}
-      {/* <Timer></Timer> */}
-      {/* <Header></Header> */}
-      {/* <Photos></Photos> */}
-      {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
-      {/* <StopWatch></StopWatch> */}
-      {/* <Input></Input> */}
-      {/* <TextareaAutoResize></TextareaAutoResize> */}
-      {/* <button className=" inline-block m-3 p-3 rounded-lg text-white bg-green-400 cursor-pointer" onClick={() => {setShow(!show)}}>Show menu</button>
-      <div className="p-5">
-        <Dropdown></Dropdown>
-      </div> */}
-      {/* <Blog></Blog> */}
-      {/* <button onClick={() => setShow(!show)}>Toggle</button>
-      {show && <HackerNews></HackerNews>} */}
-      {/* <HackerNewsWithHook></HackerNewsWithHook> */}
-      {/* <SidebarMenu show={show} ref={node}></SidebarMenu> */}
-      {/* <Form></Form> */}
-      {/* <MovieSearchApp></MovieSearchApp> */}
-      {/* <SignUpForm></SignUpForm> */}
-      {/* <SignUpFormV2></SignUpFormV2> */}
-      {/* <SignUpFormFinal></SignUpFormFinal> */}
-      <SignUpFormHook></SignUpFormHook>
-    </div>
+    // <div>
+    //   {/* <Photos></Photos> */}
+    //   {/* <Counter></Counter> */}
+    //   {/* <Timer></Timer> */}
+    //   {/* <Header></Header> */}
+    //   {/* <Photos></Photos> */}
+    //   {/* <HackerNewsWithReducer></HackerNewsWithReducer> */}
+    //   {/* <StopWatch></StopWatch> */}
+    //   {/* <Input></Input> */}
+    //   {/* <TextareaAutoResize></TextareaAutoResize> */}
+    //   {/* <button className=" inline-block m-3 p-3 rounded-lg text-white bg-green-400 cursor-pointer" onClick={() => {setShow(!show)}}>Show menu</button>
+    //   <div className="p-5">
+    //     <Dropdown></Dropdown>
+    //   </div> */}
+    //   {/* <Blog></Blog> */}
+    //   {/* <button onClick={() => setShow(!show)}>Toggle</button>
+    //   {show && <HackerNews></HackerNews>} */}
+    //   {/* <HackerNewsWithHook></HackerNewsWithHook> */}
+    //   {/* <SidebarMenu show={show} ref={node}></SidebarMenu> */}
+    //   {/* <Form></Form> */}
+    //   {/* <MovieSearchApp></MovieSearchApp> */}
+    //   {/* <SignUpForm></SignUpForm> */}
+    //   {/* <SignUpFormV2></SignUpFormV2> */}
+    //   {/* <SignUpFormFinal></SignUpFormFinal> */}
+    //   {/* <SignUpFormHook></SignUpFormHook> */}
+    // </div>
+    <Fragment>
+      <div className="">
+        <Modal></Modal>
+      </div>
+      <div className=" relative z-30">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. At unde
+        excepturi dolorum dolores doloremque vitae repudiandae quae, itaque,
+        neque nobis, enim adipisci inventore maiores quidem blanditiis cumque
+        facere et voluptate?
+      </div>
+    </Fragment>
   );
 };
 
