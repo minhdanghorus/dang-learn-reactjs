@@ -13,7 +13,7 @@ const Modal = ({ open = false, handleClose = () => {} }) => {
         open ? "" : "opacity-0 invisible"
       }`}
     >
-      <div className="overlay absolute inset-0 bg-black bg-opacity-25"></div>
+      <div className="overlay absolute inset-0 bg-black bg-opacity-25" onClick={handleClose}></div>
       <div className="modal-content bg-white relative z-10 p-10 rounded-lg w-full max-w-[482px]">
         <span
           className="absolute top-0 right-0 flex items-center justify-center w-10 h-10 p-1 bg-white rounded-full cursor-pointer -translate-y-2/4 translate-x-2/4"

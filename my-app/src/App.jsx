@@ -37,6 +37,7 @@ import Modal from "./components/modal/Modal";
 const App = () => {
   // const [show, setShow] = React.useState(false);
   // const {node, show, setShow } = useClickOutSide("button");
+  const [showModal, setShowModal] = React.useState(false);
   return (
     // <div>
     //   {/* <Photos></Photos> */}
@@ -66,8 +67,14 @@ const App = () => {
     // </div>
     <Fragment>
       <div className="">
-        <Modal></Modal>
+        <Modal open={showModal} handleClose={() => {setShowModal(false)}}></Modal>
       </div>
+      <button
+        className="button p-5 m-5 bg-blue-500 text-white rounded-lg"
+        onClick={() => setShowModal(true)}
+      >
+        Click me
+      </button>
       <div className=" relative z-30">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. At unde
         excepturi dolorum dolores doloremque vitae repudiandae quae, itaque,
