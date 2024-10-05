@@ -31,7 +31,7 @@ function DropdownList({ coordinates }) {
     <div
       className=" p-5 border border-gray-400 rounded-lg w-full absolute top-full left-0 bg-white"
       style={{
-        top: coordinates.top + coordinates.height,
+        top: coordinates.top + coordinates.height + window.scrollY,
         left: coordinates.left,
         width: coordinates.width,
       }}
