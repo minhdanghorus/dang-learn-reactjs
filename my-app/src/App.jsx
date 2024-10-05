@@ -24,6 +24,7 @@ import SignUpForm from "./components/form/SignUpForm";
 import SignUpFormV2 from "./components/form/SignUpFormV2";
 import SignUpFormFinal from "./components/form/SignUpFormFinal";
 import SignUpFormHook from "./components/form/SignUpFormHook";
+import DropdownPortal from "./components/DropdownPortal";
 import Modal from "./components/modal/Modal";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
@@ -81,6 +82,7 @@ const App = () => {
         neque nobis, enim adipisci inventore maiores quidem blanditiis cumque
         facere et voluptate?
       </div>
+      <DropdownPortal></DropdownPortal>
     </Fragment>
   );
 };
