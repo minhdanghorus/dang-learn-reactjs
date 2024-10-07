@@ -27,6 +27,8 @@ import SignUpFormHook from "./components/form/SignUpFormHook";
 import DropdownPortal from "./components/DropdownPortal";
 import Modal from "./components/modal/Modal";
 import Tooltip from "./components/tooltip/Tooltip";
+import Game from "./components/tictactoe/GameWithReducer";
+import { ErrorBoundary } from "react-error-boundary";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -35,6 +37,18 @@ import Tooltip from "./components/tooltip/Tooltip";
 //   },
 //   orange: "#ffa400",
 // };
+
+
+function fallbackRender({ error, resetErrorBoundary }) {
+  // Call resetErrorBoundary() to reset the error boundary and retry the render.
+
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre style={{ color: "red" }}>{error.message}</pre>
+    </div>
+  );
+}
 
 const App = () => {
   // const [show, setShow] = React.useState(false);
@@ -84,9 +98,13 @@ const App = () => {
         facere et voluptate?
       </div>
       <DropdownPortal></DropdownPortal> */}
-      <div className="p-16 mt-16 overflow-hidden">
+      {/* <div className="p-16 mt-16 overflow-hidden">
         <Tooltip text="Hover me">This is a tooltip content</Tooltip>
-      </div>
+      </div> */}
+      <ErrorBoundary fallbackRender={fallbackRender}>
+        <Game></Game>
+      </ErrorBoundary>
+      <SignUpForm></SignUpForm>
     </Fragment>
   );
 };
