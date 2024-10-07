@@ -26,6 +26,7 @@ import SignUpFormFinal from "./components/form/SignUpFormFinal";
 import SignUpFormHook from "./components/form/SignUpFormHook";
 import DropdownPortal from "./components/DropdownPortal";
 import Modal from "./components/modal/Modal";
+import Tooltip from "./components/tooltip/Tooltip";
 // import { GlobalStyles } from "./GlobalStyles";
 // import { ThemeProvider } from "styled-components";
 // const theme = {
@@ -67,7 +68,7 @@ const App = () => {
     //   {/* <SignUpFormHook></SignUpFormHook> */}
     // </div>
     <Fragment>
-      <div className="">
+      {/* <div className="">
         <Modal open={showModal} handleClose={() => {setShowModal(false)}}></Modal>
       </div>
       <button
@@ -82,7 +83,10 @@ const App = () => {
         neque nobis, enim adipisci inventore maiores quidem blanditiis cumque
         facere et voluptate?
       </div>
-      <DropdownPortal></DropdownPortal>
+      <DropdownPortal></DropdownPortal> */}
+      <div className="p-16">
+        <Tooltip text="Hover me">This is a tooltip content</Tooltip>
+      </div>
     </Fragment>
   );
 };
