@@ -24,10 +24,10 @@ const Tooltip = ({ children, text }) => {
 const TooltipContent = ({ children, coordinates }) => {
   return ReactDOM.createPortal(
     <div
-      className="p-3 bg-black text-white rounded-xl inline-block absolute"
+      className="p-3 bg-black text-white rounded-xl inline-block absolute -translate-y-full max-w-[200px] -translate-x-2/4"
       style={{
-        top: coordinates.top + coordinates.height + window.scrollY,
-        left: coordinates.left,
+        top: coordinates.top - coordinates.height / 2 +window.scrollY,
+        left: coordinates.left + coordinates.width / 2,
       }}
     >
       <span>{children}</span>

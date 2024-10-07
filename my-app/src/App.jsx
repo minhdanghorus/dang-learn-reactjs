@@ -84,7 +84,7 @@ const App = () => {
         facere et voluptate?
       </div>
       <DropdownPortal></DropdownPortal> */}
-      <div className="p-16">
+      <div className="p-16 mt-16 overflow-hidden">
         <Tooltip text="Hover me">This is a tooltip content</Tooltip>
       </div>
     </Fragment>
