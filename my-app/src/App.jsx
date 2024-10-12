@@ -1,12 +1,12 @@
-import React from 'react'
-import Modal from "./components/modal/Modal";
+import React from "react";
+import Portal from "./components/Portal";
 
 const App = () => {
   return (
     <div>
-      <Modal open={true} handleClose={() => {}}></Modal>
+      <Portal />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
