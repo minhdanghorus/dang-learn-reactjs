@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
+import Protypes from "prop-types";
 
 function createPortalWrapper() {
   const element = document.createElement("div");
@@ -15,6 +16,7 @@ const Portal = ({
   onClose = () => {},
   containerStyle = {},
   bodyStyle = {},
+  children,
   visible = false,
 }) => {
   useEffect(() => {
@@ -33,14 +35,21 @@ const Portal = ({
         className={`content relative z-10 ${bodyClassName}`}
         style={bodyStyle}
       >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati
-        soluta rerum ratione perferendis pariatur est modi tempore laboriosam
-        nostrum, corporis quam itaque sit quo recusandae, dignissimos asperiores
-        dicta accusamus ipsa.
+        {children}
       </div>
     </div>
   );
   return createPortal(renderContent, portalWrapperElm);
+};
+
+Portal.propTypes = {
+  containerClassName: Protypes.string,
+  bodyClassName: Protypes.string,
+  onClose: Protypes.func,
+  containerStyle: Protypes.object,
+  bodyStyle: Protypes.object,
+  visible: Protypes.bool.isRequired,
+  children: Protypes.node,
 };
 
 export default Portal;
