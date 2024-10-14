@@ -1,12 +1,13 @@
 import React from "react";
 import ModalBase from "./components/modal/ModalBase";
 import ModalAdvanced from "./components/modal/ModalAdvanced";
+import TooltipAdvanced from "./components/tooltip/TooltipAdvanced";
 
 const App = () => {
   const [openModalBase, setOpenModalBase] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
   return (
-    <div className="p-5">
+    <div className="p-5 flex justify-center items-center h-screen">
       <button
         className="p-5 text-white rounded-lg text-center bg-blue-500"
         onClick={() => setOpenModalBase(true)}
@@ -31,7 +32,12 @@ const App = () => {
           labore omnis repellendus.
         </div>
       </ModalBase>
-      <ModalAdvanced visible={openModal} heading="Welcome back" onClose={() => setOpenModal(false)} bodyClassName="w-full max-w-[400px]">
+      <ModalAdvanced
+        visible={openModal}
+        heading="Welcome back"
+        onClose={() => setOpenModal(false)}
+        bodyClassName="w-full max-w-[400px]"
+      >
         <div className="flex flex-col gap-3 mb-5">
           <label htmlFor="email" className="text-sm cursor-pointer">
             Email address
@@ -56,6 +62,7 @@ const App = () => {
           Sign in
         </button>
       </ModalAdvanced>
+      <TooltipAdvanced title="Tooltip">This is a tooltip</TooltipAdvanced>
     </div>
   );
 };
