@@ -26,6 +26,9 @@ const App = () => {
         onClose={() => setOpenModalBase(false)}
       >
         <div className="bg-white p-10 rounded-lg w-full max-w-[320px]">
+          <TooltipAdvanced title="Tooltip2">
+            This is a tooltip 2
+          </TooltipAdvanced>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
           assumenda repudiandae tenetur quis amet officia recusandae mollitia
           porro ut nemo dolor? Quisquam, soluta inventore culpa iste doloribus
@@ -36,7 +39,7 @@ const App = () => {
         visible={openModal}
         heading="Welcome back"
         onClose={() => setOpenModal(false)}
-        bodyClassName="w-full max-w-[400px]"
+        bodyClassName="w-full max-w-[400px] content relative z-10"
       >
         <div className="flex flex-col gap-3 mb-5">
           <label htmlFor="email" className="text-sm cursor-pointer">

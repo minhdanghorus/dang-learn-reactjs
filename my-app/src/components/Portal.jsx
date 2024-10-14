@@ -17,22 +17,21 @@ const Portal = ({
   containerStyle = {},
   bodyStyle = {},
   children,
-  visible = false,
+  overlay = true,
 }) => {
   useEffect(() => {
     document.body.appendChild(portalWrapperElm);
   }, []);
   const renderContent = (
     <div
-      className={`fixed inset-0 ${containerClassName}`}
+      className={containerClassName}
       style={containerStyle}
       onClick={onClose}
     >
-      <div className="overlay absolute inset-0 bg-black bg-opacity-20"></div>
-      <div
-        className={`content relative z-10 ${bodyClassName}`}
-        style={bodyStyle}
-      >
+      {overlay && (
+        <div className="overlay absolute inset-0 bg-black bg-opacity-20"></div>
+      )}
+      <div className={bodyClassName} style={bodyStyle}>
         {children}
       </div>
     </div>
@@ -46,8 +45,9 @@ Portal.propTypes = {
   onClose: Protypes.func,
   containerStyle: Protypes.object,
   bodyStyle: Protypes.object,
-  visible: Protypes.bool.isRequired,
+//   visible: Protypes.bool.isRequired,
   children: Protypes.node,
+  overlay: Protypes.bool,
 };
 
 export default Portal;

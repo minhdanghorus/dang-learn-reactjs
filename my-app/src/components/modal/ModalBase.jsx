@@ -11,8 +11,8 @@ const ModalBase = ({ visible, onClose, children, bodyClassName = "" }) => {
             visible={status !== "exited"}
             onClose={onClose}
             bodyStyle={{ transition: "all 250ms" }}
-            bodyClassName={bodyClassName}
-            containerClassName="fixed z-[9999] inset-0  flex items-center justify-center"
+            bodyClassName={`content relative z-10 ${bodyClassName}`}
+            containerClassName="fixed z-[9999] inset-0 flex items-center justify-center"
           >
             {children}
           </Portal>
