@@ -2,7 +2,7 @@ import React from "react";
 import Portal from "../Portal";
 import { CSSTransition } from "react-transition-group";
 
-const ModalBase = ({ visible, onClose, children }) => {
+const ModalBase = ({ visible, onClose, children, bodyClassName = "" }) => {
   return (
     <>
       <CSSTransition in={visible} timeout={250} unmountOnExit classNames="zoom">
@@ -11,6 +11,7 @@ const ModalBase = ({ visible, onClose, children }) => {
             visible={status !== "exited"}
             onClose={onClose}
             bodyStyle={{ transition: "all 250ms" }}
+            bodyClassName={bodyClassName}
             containerClassName="fixed z-[9999] inset-0  flex items-center justify-center"
           >
             {children}
