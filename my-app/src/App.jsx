@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { CountProvider, useCount } from "./contexts/countContext";
 import HeaderMain from "./components/HeaderMain";
+import { AuthProvider } from "./contexts/auth-context";
 
 function Counter() {
   const [count] = useCount();
@@ -30,7 +31,9 @@ const App = () => {
           <CoundDisplay></CoundDisplay>
         </CountProvider>
       </div> */}
-      <HeaderMain></HeaderMain>
+      <AuthProvider>
+        <HeaderMain></HeaderMain>
+      </AuthProvider>
     </Fragment>
   );
 };
