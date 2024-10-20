@@ -1,23 +1,14 @@
-import React, { createContext, useContext, useState } from "react";
-
-const CountContext = createContext();
-
-function CountProvider(props) {
-  const [count, setCount] = useState(0);
-  const value = [count, setCount];
-  return (
-    <CountContext.Provider value={value} {...props}></CountContext.Provider>
-  );
-}
+import React from "react";
+import { CountProvider, useCount } from "./contexts/countContext";
 
 function Counter() {
-  const [count] = useContext(CountContext);
+  const [count] = useCount();
   return <div className="">The count is: {count}</div>;
 }
 
 function CoundDisplay() {
   // const setCount = () => {};
-  const [, setCount] = useContext(CountContext);
+  const [, setCount] = useCount();
   const increment = () => setCount((c) => c + 1);
   return (
     <button
