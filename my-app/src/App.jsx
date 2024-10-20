@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { CountProvider, useCount } from "./contexts/countContext";
+import HeaderMain from "./components/HeaderMain";
 
 function Counter() {
   const [count] = useCount();
@@ -22,12 +23,15 @@ function CoundDisplay() {
 
 const App = () => {
   return (
-    <div className="p-5 flex justify-center items-center gap-x-5">
-      <CountProvider>
-        <Counter></Counter>
-        <CoundDisplay></CoundDisplay>
-      </CountProvider>
-    </div>
+    <Fragment>
+      {/* <div className="p-5 flex justify-center items-center gap-x-5">
+        <CountProvider>
+          <Counter></Counter>
+          <CoundDisplay></CoundDisplay>
+        </CountProvider>
+      </div> */}
+      <HeaderMain></HeaderMain>
+    </Fragment>
   );
 };
 
