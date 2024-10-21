@@ -4,6 +4,7 @@ import HeaderMain from "./components/HeaderMain";
 import { AuthProvider } from "./contexts/auth-context";
 import { GalleryProvider } from "./contexts/gallery-context";
 import PhotoList from "./components/gallery/PhotoList";
+import CartList from "./components/gallery/CartList";
 
 function Counter() {
   const [count] = useCount();
@@ -37,6 +38,7 @@ const App = () => {
         <GalleryProvider>
           <HeaderMain></HeaderMain>
           <PhotoList></PhotoList>
+          <CartList></CartList>
         </GalleryProvider>
       </AuthProvider>
     </Fragment>
