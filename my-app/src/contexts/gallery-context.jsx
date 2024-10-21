@@ -49,6 +49,14 @@ function GalleryProvider(props) {
     setPhotos(updatedPhotos);
   }
 
+  function addToCart(newItem) {
+    setCartItems((prevItems) => {
+      const existedItem = prevItems.some((item) => item.id === newItem.id);
+      if (existedItem) return [...prevItems];
+      return [...prevItems, newItem];
+    });
+  }
+
   const value = {
     photos,
     setPhotos,
@@ -57,6 +65,7 @@ function GalleryProvider(props) {
     favoriteList,
     setFavoriteList,
     toggleFavorite,
+    addToCart,
   };
   return (
     <galleryContext.Provider value={value} {...props}></galleryContext.Provider>
