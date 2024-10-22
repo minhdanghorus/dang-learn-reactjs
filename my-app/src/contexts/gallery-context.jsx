@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const galleryContext = createContext();
 const fakeData = [
@@ -35,9 +36,15 @@ const fakeData = [
 ];
 
 function GalleryProvider(props) {
-  const [photos, setPhotos] = useState(fakeData);
-  const [cartItems, setCartItems] = useState([]);
+  const { storedValue, setValue } = useLocalStorage("photos", fakeData);
+  const { storedValue: storedCart, setValue: setStoredCart } = useLocalStorage(
+    "cartItems",
+    []
+  );
+  const [photos, setPhotos] = useState(storedValue);
+  const [cartItems, setCartItems] = useState(storedCart);
   const [favoriteList, setFavoriteList] = useState([]);
+  console.log("🚀 ~ GalleryProvider ~ storedValue:", storedValue);
 
   function toggleFavorite(photoId) {
     const updatedPhotos = photos.map((photo) => {
@@ -47,19 +54,26 @@ function GalleryProvider(props) {
       return photo;
     });
     setPhotos(updatedPhotos);
+    setValue(updatedPhotos);
   }
 
   function addToCart(newItem) {
     setCartItems((prevItems) => {
       const existedItem = prevItems.some((item) => item.id === newItem.id);
-      if (existedItem) return [...prevItems];
+      if (existedItem) {
+        setStoredCart([...prevItems]);
+        return [...prevItems];
+      }
+      setStoredCart([...prevItems, newItem]);
       return [...prevItems, newItem];
     });
   }
 
   function removeFromCart(itemId) {
     setCartItems((prevItems) => {
-      return prevItems.filter((item) => item.id !== itemId);
+      const result = prevItems.filter((item) => item.id !== itemId);
+      setStoredCart(result);
+      return result;
     });
   }
 
