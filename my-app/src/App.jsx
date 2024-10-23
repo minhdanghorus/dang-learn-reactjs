@@ -6,6 +6,9 @@ import { GalleryProvider } from "./contexts/gallery-context";
 import PhotoList from "./components/gallery/PhotoList";
 import CartList from "./components/gallery/CartList";
 import { Routes, Route} from 'react-router-dom'
+import Nav from "./components/Nav";
+import BlogPage from "./components/BlogPage";
+import ProfilePage from "./components/ProfilePage";
 
 function Counter() {
   const [count] = useCount();
@@ -46,11 +49,14 @@ const App = () => {
   // );
 
   return (
-    <Routes>
-      <Route path="/" element={<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum dolore corrupti possimus dolores non voluptatum, molestiae debitis voluptatem! Delectus adipisci maiores ratione impedit asperiores nisi ullam porro laudantium tempora assumenda?</div>}></Route>
-      <Route path="/about" element={<div>This is about</div>}></Route>
-      <Route path="/movie/:moviedId" element={<div>This is movie details of movieId</div>}></Route>
-    </Routes>
+    <div>
+      <Nav></Nav>
+      <Routes>
+        <Route path="/" element={<>Home Page</>}></Route>
+        <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
+        <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
+      </Routes>
+    </div>
   )
 };
 
