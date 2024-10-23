@@ -5,6 +5,7 @@ import { AuthProvider } from "./contexts/auth-context";
 import { GalleryProvider } from "./contexts/gallery-context";
 import PhotoList from "./components/gallery/PhotoList";
 import CartList from "./components/gallery/CartList";
+import { Routes, Route} from 'react-router-dom'
 
 function Counter() {
   const [count] = useCount();
@@ -26,23 +27,31 @@ function CoundDisplay() {
 }
 
 const App = () => {
+  // return (
+  //   <Fragment>
+  //     {/* <div className="p-5 flex justify-center items-center gap-x-5">
+  //       <CountProvider>
+  //         <Counter></Counter>
+  //         <CoundDisplay></CoundDisplay>
+  //       </CountProvider>
+  //     </div> */}
+  //     <AuthProvider>
+  //       <GalleryProvider>
+  //         <HeaderMain></HeaderMain>
+  //         <PhotoList></PhotoList>
+  //         <CartList></CartList>
+  //       </GalleryProvider>
+  //     </AuthProvider>
+  //   </Fragment>
+  // );
+
   return (
-    <Fragment>
-      {/* <div className="p-5 flex justify-center items-center gap-x-5">
-        <CountProvider>
-          <Counter></Counter>
-          <CoundDisplay></CoundDisplay>
-        </CountProvider>
-      </div> */}
-      <AuthProvider>
-        <GalleryProvider>
-          <HeaderMain></HeaderMain>
-          <PhotoList></PhotoList>
-          <CartList></CartList>
-        </GalleryProvider>
-      </AuthProvider>
-    </Fragment>
-  );
+    <Routes>
+      <Route path="/" element={<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum dolore corrupti possimus dolores non voluptatum, molestiae debitis voluptatem! Delectus adipisci maiores ratione impedit asperiores nisi ullam porro laudantium tempora assumenda?</div>}></Route>
+      <Route path="/about" element={<div>This is about</div>}></Route>
+      <Route path="/movie/:moviedId" element={<div>This is movie details of movieId</div>}></Route>
+    </Routes>
+  )
 };
 
 export default App;
