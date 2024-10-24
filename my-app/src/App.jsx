@@ -5,7 +5,7 @@ import { AuthProvider } from "./contexts/auth-context";
 import { GalleryProvider } from "./contexts/gallery-context";
 import PhotoList from "./components/gallery/PhotoList";
 import CartList from "./components/gallery/CartList";
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import BlogPage from "./components/BlogPage";
 import ProfilePage from "./components/ProfilePage";
@@ -50,14 +50,16 @@ const App = () => {
 
   return (
     <div>
-      <Nav></Nav>
       <Routes>
-        <Route path="/" element={<>Home Page</>}></Route>
-        <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
-        <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
+        <Route path="/" element={<Nav></Nav>}>
+          <Route path="/" element={<>Home Page</>}></Route>
+          <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
+          <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
+        </Route>
+        <Route path="*" element={<>404 Not Found</>}></Route>
       </Routes>
     </div>
-  )
+  );
 };
 
 export default App;
