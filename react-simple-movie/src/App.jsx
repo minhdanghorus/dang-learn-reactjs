@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header className="header flex gap-x-5 items-center justify-center text-white py-10 mb-10">
+        <span className="text-primary">Home</span>
+        <span>Movies</span>
+      </header>
+      <section className="banner h-[400px] page-container">
+        <div className="w-full h-full rounded-lg relative">
+          <div className="overlay absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.5)] to-[rgba(0,0,0,0.5)] rounded-lg"></div>
+          <img
+            src="https://genk.mediacdn.vn/2019/11/12/1-1573571042465953988347.jpeg"
+            alt=""
+            className="w-full h-full rounded-lg object-cover"
+          />
+          <div className="absolute left-5 bottom-5 w-full text-white">
+            <div className="font-bold text-3xl mb-5">Avenger: Endgame</div>
+            <div className="flex items-center gap-x-3 mb-8">
+              <span className="py-2 px-4 border border-white rounded-md">
+                Action
+              </span>
+              <span className="py-2 px-4 border border-white rounded-md">
+                Adventure
+              </span>
+              <span className="py-2 px-4 border border-white rounded-md">
+                Drama
+              </span>
+            </div>
+            <button className="py-3 px-6 bg-primary rounded-lg text-white font-medium">
+              Watch now
+            </button>
+          </div>
+        </div>
+      </section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
