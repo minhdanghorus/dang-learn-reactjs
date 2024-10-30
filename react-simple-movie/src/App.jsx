@@ -48,49 +48,13 @@ function App() {
         <h2 className="capitalize text-white mb-10 text-3xl font-bold">
           Top rated
         </h2>
-        <div className="movie-list grid grid-cols-4 gap-10">
-          <div className="movie-card rounded-lg p-3 bg-slate-800 text-white">
-            <img
-              src="https://s3.cloud.cmctelecom.vn/tinhte1/2018/05/4308115_preview.medium.jpg"
-              alt=""
-              className="w-full h-[250px] rounded-lg object-cover mb-5"
-            />
-            <h3 className="capitalize text-xl font-bold mb-3">
-              Doraemon và những hiệp sĩ không gian
-            </h3>
-            <div className="flex justify-between items-center text-sm opacity-50 mb-10">
-              <span>2017</span>
-              <span>7.4</span>
-            </div>
-            <button className="py-3 px-6 bg-primary rounded-lg text-white font-medium capitalize w-full">
-              Watch now
-            </button>
-          </div>
-        </div>
+        <MovieList type="top_rated"></MovieList>
       </section>
       <section className="movies-layout page-container pb-20">
         <h2 className="capitalize text-white mb-10 text-3xl font-bold">
           Trending
         </h2>
-        <div className="movie-list grid grid-cols-4 gap-10">
-          <div className="movie-card rounded-lg p-3 bg-slate-800 text-white">
-            <img
-              src="https://s3.cloud.cmctelecom.vn/tinhte1/2018/05/4308115_preview.medium.jpg"
-              alt=""
-              className="w-full h-[250px] rounded-lg object-cover mb-5"
-            />
-            <h3 className="capitalize text-xl font-bold mb-3">
-              Doraemon và những hiệp sĩ không gian
-            </h3>
-            <div className="flex justify-between items-center text-sm opacity-50 mb-10">
-              <span>2017</span>
-              <span>7.4</span>
-            </div>
-            <button className="py-3 px-6 bg-primary rounded-lg text-white font-medium capitalize w-full">
-              Watch now
-            </button>
-          </div>
-        </div>
+        <MovieList type="popular"></MovieList>
       </section>
     </>
   );
