@@ -5,7 +5,7 @@ const MovieCard = ({ item }) => {
   return (
     <div className="movie-card flex flex-col rounded-lg p-3 bg-slate-800 text-white h-full select-none">
       <img
-        src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt=""
         className="w-full h-[250px] rounded-lg object-cover mb-5"
       />
