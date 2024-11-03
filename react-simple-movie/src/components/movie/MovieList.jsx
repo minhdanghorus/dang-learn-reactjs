@@ -12,7 +12,7 @@ const MovieList = ({ type = "now_playing" }) => {
     `https://api.themoviedb.org/3/movie/${type}?api_key=cd274f8584c2f2d792eea93ffe4a8a94&language=en-US`,
     fetcher
   );
-  console.log("🚀 ~ MovieList ~ data:", data);
+  // console.log("🚀 ~ MovieList ~ data:", data);
 
   // useEffect(() => {
   //   if (data && data.results) setMovies(data.results);
