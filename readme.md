@@ -5,3 +5,5 @@ Then run the following command:
 npm install
 npm run dev
 ```
+
+Hiện tại chuyển sang https://evonhub.dev/khoa-hoc-reactjs-co-ban, do đó sẽ nâng bài lên. Mapping là bài 212 cũ thành bài 203 mới.
