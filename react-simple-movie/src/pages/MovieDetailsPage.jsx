@@ -32,7 +32,7 @@ const MovieDetailsPage = () => {
           className="w-full h-full object-cover rounded-xl"
         />
       </div>
-      <h1 className="text-center text-3xl font-bold text-white mb-10">
+      <h1 className="text-center text-4xl font-bold text-white mb-10">
         {title}
       </h1>
       {genres.length > 0 && (
@@ -42,9 +42,42 @@ const MovieDetailsPage = () => {
           })}
         </div>
       )}
-      <p className="text-center leading-relaxed max-w-[600px] mx-auto">{overview}</p>
+      <p className="text-center leading-relaxed max-w-[600px] mx-auto mb-10">{overview}</p>
+      <MovieCredits></MovieCredits>
+      <MovieVideo></MovieVideo>
     </div>
   );
 };
+
+function MovieCredits() {
+  const { movieId } = useParams();
+  const { data, error} = useSWR(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`, fetcher);
+  // console.log("🚀 ~ MovieCredits ~ data:", data);
+
+  if (!data) return null;
+  const { cast } = data;
+  if (!cast || cast.length === 0) return null;
+
+  return <div className="py-10">
+    <h2 className="text-center text-3xl mb-10">Cast</h2>
+    <div className="grid grid-cols-4 gap-5">
+    {
+      cast.slice(0, 4).map((item) => {
+        return <div className="cast-item" key={item.id}>
+        <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`} alt="" className=" w-full h-[350px] object-cover rounded-lg mb-3" />
+        <h3 className="text-xl">{item.name}</h3>
+      </div>
+      })
+    }
+    </div>
+  </div>
+}
+
+function MovieVideo() {
+  const movieId = useParams();
+  const { data, error} = useSWR(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`, fetcher);
+  if (!data) return null;
+  return <div className=""></div>
+}
 
 export default MovieDetailsPage;
