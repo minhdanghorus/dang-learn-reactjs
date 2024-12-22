@@ -8,7 +8,7 @@ import MovieCard from "../components/movie/MovieCard";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  console.log("🚀 ~ MovieDetailsPage ~ params:", movieId);
+  // console.log("🚀 ~ MovieDetailsPage ~ params:", movieId);
   const { data, error } = useSWR(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`,
     fetcher
@@ -143,7 +143,7 @@ function MovieSimilar() {
     `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`,
     fetcher
   );
-  console.log("🚀 ~ MovieSimilar ~ data:", data);
+  // console.log("🚀 ~ MovieSimilar ~ data:", data);
   if (!data) return null;
   const { results } = data;
   if (!results || results.length === 0) return null;
