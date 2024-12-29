@@ -35,6 +35,23 @@ function App() {
               path="/movie/:movieId"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
+            <Route
+              path="*"
+              element={
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100vh",
+                    fontSize: "2rem",
+                    color: "red",
+                  }}
+                >
+                  404 Not Found
+                </div>
+              }
+            ></Route>
           </Route>
         </Routes>
       </Suspense>
