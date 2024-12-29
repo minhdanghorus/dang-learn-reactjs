@@ -25,11 +25,12 @@ const MoviePage = () => {
       (index) => url.replace("page=1", `page=${index + 2}`),
       fetcher
     );
+  const isEmpty = data?.[0]?.results.length === 0;
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.results.length < itemsPerPage);
   console.log("🚀 ~ MovieList ~ data:", data);
   const movies = data ? data.reduce((a, b) => a.concat(b.results), []) : [];
   console.log("🚀 ~ MoviePage ~ movies:", movies);
 
-  // const { data, error } = useSWR(url, fetcher);
   const loading = !data && !error;
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const MoviePage = () => {
           ))}
       </div>
       <div className="mt-10 text-center">
-        <Button>Load more</Button>
+        <Button onClick={() => ( isReachingEnd ? {} :setSize(size + 1))} disabled={isReachingEnd} className={isReachingEnd ? "bg-slate-300" : ""}>Load more</Button>
       </div>
     </div>
   );
