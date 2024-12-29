@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
 import { fetcher, tmdbAPI } from "../config";
-import MovieCard from "../components/movie/MovieCard";
+import MovieCard, { MovieCardSkeleton } from "../components/movie/MovieCard";
 import useDebounce from "../hooks/useDebounce";
 import ReactPaginate from "react-paginate";
+import { v4 } from "uuid";
 
 const itemsPerPage = 20;
 const MoviePage = () => {
@@ -11,9 +12,7 @@ const MoviePage = () => {
   const [pageCount, setPageCount] = useState(0);
   const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
-  const [url, setUrl] = useState(
-    tmdbAPI.getMovieList("popular", nextPage)
-  );
+  const [url, setUrl] = useState(tmdbAPI.getMovieList("popular", nextPage));
   const filterDebounce = useDebounce(filter, 500);
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
@@ -24,13 +23,9 @@ const MoviePage = () => {
 
   useEffect(() => {
     if (filterDebounce) {
-      setUrl(
-        tmdbAPI.getMovieSearch(filterDebounce, nextPage)
-      );
+      setUrl(tmdbAPI.getMovieSearch(filterDebounce, nextPage));
     } else {
-      setUrl(
-        tmdbAPI.getMovieList("popular", nextPage)
-      );
+      setUrl(tmdbAPI.getMovieList("popular", nextPage));
     }
   }, [filterDebounce, nextPage]);
 
@@ -87,8 +82,15 @@ const MoviePage = () => {
           </svg>
         </button>
       </div>
-      {loading && (
+      {/* {loading && (
         <div className=" w-10 h-10 rounded-full border-4 border-primary border-t-transparent border-t-4 mx-auto animate-spin"></div>
+      )} */}
+      {loading && (
+        <div className="grid grid-cols-4 gap-10">
+          {new Array(itemsPerPage).fill(0).map(() => (
+            <MovieCardSkeleton key={v4()}></MovieCardSkeleton>
+          ))}
+        </div>
       )}
       <div className="grid grid-cols-4 gap-10">
         {!loading &&
