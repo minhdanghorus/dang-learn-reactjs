@@ -6,7 +6,7 @@ const Button = ({
   full = false,
   type = "button",
   bgColor = "primary",
-  children,
+  children = "Watch now",
 }) => {
   let bgClassname = "bg-primary";
   switch (bgColor) {
@@ -27,7 +27,7 @@ const Button = ({
         full ? "w-full" : ""
       } ${className}`}
     >
-      Watch now
+      {children}
     </button>
   );
 };
