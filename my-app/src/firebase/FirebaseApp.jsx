@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase-config";
 
@@ -7,7 +7,8 @@ const FirebaseApp = () => {
   const colRef = collection(db, "posts");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-//   console.log("colRef", colRef);
+  const [postId, setPostId] = useState("");
+  //   console.log("colRef", colRef);
   useEffect(() => {
     // 1. Get collection data (posts)
     getDocs(colRef)
@@ -46,9 +47,16 @@ const FirebaseApp = () => {
         //reset form
       });
   };
+
+  const handleRemovePost = async (e) => {
+    e.preventDefault();
+    const colRefDelete = doc(db, "posts", postId);
+    await deleteDoc(colRefDelete);
+    console.log("Document successfully deleted!");
+  };
   return (
     <div className="w-full max-w-[500px] mx-auto bg-white shadow-lg p-5">
-      <form action="" onSubmit={handleAddPost}>
+      <form action="" onSubmit={handleAddPost} className="mb-10">
         <input
           type="text"
           className="p-3 rounded border border-gray-200 w-full mb-5 outline-none focus:border-blue-500"
@@ -68,6 +76,22 @@ const FirebaseApp = () => {
           className="p-3 bg-blue-500 text-white text-sm font-medium w-full rounded-lg"
         >
           Add post
+        </button>
+      </form>
+
+      <form action="" onSubmit={handleRemovePost}>
+        <input
+          type="text"
+          className="p-3 rounded border border-gray-200 w-full mb-5 outline-none focus:border-blue-500"
+          placeholder="Enter your id"
+          name="PostId"
+          onChange={(e) => setPostId(e.target.value)}
+        ></input>
+        <button
+          type="submit"
+          className="p-3 bg-red-500 text-white text-sm font-medium w-full rounded-lg"
+        >
+          Delete post
         </button>
       </form>
     </div>
