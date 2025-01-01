@@ -10,6 +10,7 @@ import Nav from "./components/Nav";
 import BlogPage from "./components/BlogPage";
 import ProfilePage from "./components/ProfilePage";
 import BlogPageDetails from "./components/BlogPageDetails";
+import FirebaseApp from "./firebase/FirebaseApp";
 
 function Counter() {
   const [count] = useCount();
@@ -48,23 +49,24 @@ const App = () => {
   //     </AuthProvider>
   //   </Fragment>
   // );
+  return <FirebaseApp></FirebaseApp>;
 
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Nav></Nav>}>
-          <Route path="/" element={<>Home Page</>}></Route>
-          <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
-          <Route
-            path="blog/:slug"
-            element={<BlogPageDetails></BlogPageDetails>}
-          ></Route>
-          <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
-        </Route>
-        <Route path="*" element={<>404 Not Found</>}></Route>
-      </Routes>
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <Routes>
+  //       <Route path="/" element={<Nav></Nav>}>
+  //         <Route path="/" element={<>Home Page</>}></Route>
+  //         <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
+  //         <Route
+  //           path="blog/:slug"
+  //           element={<BlogPageDetails></BlogPageDetails>}
+  //         ></Route>
+  //         <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
+  //       </Route>
+  //       <Route path="*" element={<>404 Not Found</>}></Route>
+  //     </Routes>
+  //   </div>
+  // );
 };
 
 export default App;
