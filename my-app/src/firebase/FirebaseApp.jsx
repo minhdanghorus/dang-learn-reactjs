@@ -1,12 +1,14 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect } from "react";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { db } from "./firebase-config";
 
 const FirebaseApp = () => {
+  // colRef
+  const colRef = collection(db, "posts");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+//   console.log("colRef", colRef);
   useEffect(() => {
-    // colRef
-    const colRef = collection(db, "posts");
-    console.log("colRef", colRef);
     // 1. Get collection data (posts)
     getDocs(colRef)
       .then((snapshot) => {
@@ -24,7 +26,52 @@ const FirebaseApp = () => {
         console.log("Error getting documents: ", error);
       });
   }, []);
-  return <div></div>;
+
+  const handleAddPost = (e) => {
+    e.preventDefault();
+    addDoc(colRef, {
+      //   title: title,
+      //   author: author,
+
+      // In ES6, if the key and value are the same, you can just write the key
+      title,
+      author,
+    })
+      .then(
+        console.log("Document successfully written!")
+        //reset form
+      )
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+        //reset form
+      });
+  };
+  return (
+    <div className="w-full max-w-[500px] mx-auto bg-white shadow-lg p-5">
+      <form action="" onSubmit={handleAddPost}>
+        <input
+          type="text"
+          className="p-3 rounded border border-gray-200 w-full mb-5 outline-none focus:border-blue-500"
+          placeholder="Enter your title"
+          name="title"
+          onChange={(e) => setTitle(e.target.value)}
+        ></input>
+        <input
+          type="text"
+          className="p-3 rounded border border-gray-200 w-full mb-5 outline-none focus:border-blue-500"
+          placeholder="Enter your author"
+          name="author"
+          onChange={(e) => setAuthor(e.target.value)}
+        ></input>
+        <button
+          type="submit"
+          className="p-3 bg-blue-500 text-white text-sm font-medium w-full rounded-lg"
+        >
+          Add post
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default FirebaseApp;
