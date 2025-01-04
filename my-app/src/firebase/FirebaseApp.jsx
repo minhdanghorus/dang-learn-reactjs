@@ -5,6 +5,8 @@ import {
   doc,
   getDocs,
   onSnapshot,
+  serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase-config";
@@ -61,6 +63,7 @@ const FirebaseApp = () => {
       // In ES6, if the key and value are the same, you can just write the key
       title,
       author,
+      createdAt: serverTimestamp(),
     })
       .then(
         console.log("Document successfully written!")
@@ -71,6 +74,16 @@ const FirebaseApp = () => {
         //reset form
       });
   };
+
+  const handleUpdatePost = async (e) => {
+    e.preventDefault();
+    const colRefUpdate = doc(db, "posts", postId);
+    await updateDoc(colRefUpdate, {
+      title: title,
+    }
+    );
+    console.log("Document successfully updated!");
+  }
 
   const handleRemovePost = async (e) => {
     e.preventDefault();
