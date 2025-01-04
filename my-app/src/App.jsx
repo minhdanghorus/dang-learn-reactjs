@@ -11,6 +11,7 @@ import BlogPage from "./components/BlogPage";
 import ProfilePage from "./components/ProfilePage";
 import BlogPageDetails from "./components/BlogPageDetails";
 import FirebaseApp from "./firebase/FirebaseApp";
+import FirebaseAuth from "./firebase/FirebaseAuth";
 
 function Counter() {
   const [count] = useCount();
@@ -49,7 +50,8 @@ const App = () => {
   //     </AuthProvider>
   //   </Fragment>
   // );
-  return <FirebaseApp></FirebaseApp>;
+  // return <FirebaseApp></FirebaseApp>;
+  return <FirebaseAuth></FirebaseAuth>
 
   // return (
   //   <div>
