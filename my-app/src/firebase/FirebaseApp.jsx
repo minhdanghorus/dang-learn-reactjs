@@ -3,6 +3,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
   onSnapshot,
   serverTimestamp,
@@ -19,6 +20,7 @@ const FirebaseApp = () => {
   const [author, setAuthor] = useState("");
   const [postId, setPostId] = useState("");
   const [posts, setPosts] = useState([]);
+  const [singlePost, setSinglePost] = useState("null");
   //   console.log("colRef", colRef);
   useEffect(() => {
     // 1. Get collection data (posts)
@@ -52,6 +54,18 @@ const FirebaseApp = () => {
       setPosts(posts);
     }
     );
+
+    const docRefSingle = doc(db, "posts", "zfwrOu3QV4CPspEA09KS");
+    // getDoc(docRefSingle).then((doc) => {
+    //   console.log("doc:", doc.data());
+    // }).catch((error) => {
+    //   console.log("Error getting document:", error);
+    // });
+
+    onSnapshot(docRefSingle, (doc) => {
+      console.log("Current data: ", doc.data());
+    })
+
   }, []);
 
   const handleAddPost = (e) => {
