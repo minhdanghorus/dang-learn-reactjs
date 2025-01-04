@@ -5,9 +5,13 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase-config";
@@ -50,10 +54,9 @@ const FirebaseApp = () => {
           ...doc.data(),
         });
       });
-      console.log("posts", posts);
+      // console.log("posts", posts);
       setPosts(posts);
-    }
-    );
+    });
 
     const docRefSingle = doc(db, "posts", "zfwrOu3QV4CPspEA09KS");
     // getDoc(docRefSingle).then((doc) => {
@@ -64,8 +67,7 @@ const FirebaseApp = () => {
 
     onSnapshot(docRefSingle, (doc) => {
       console.log("Current data: ", doc.data());
-    })
-
+    });
   }, []);
 
   const handleAddPost = (e) => {
@@ -94,10 +96,9 @@ const FirebaseApp = () => {
     const colRefUpdate = doc(db, "posts", postId);
     await updateDoc(colRefUpdate, {
       title: title,
-    }
-    );
+    });
     console.log("Document successfully updated!");
-  }
+  };
 
   const handleRemovePost = async (e) => {
     e.preventDefault();
@@ -105,6 +106,26 @@ const FirebaseApp = () => {
     await deleteDoc(colRefDelete);
     console.log("Document successfully deleted!");
   };
+
+  useEffect(() => {
+    const q = query(
+      colRef,
+      limit(3),
+      orderBy("author"),
+      orderBy("title", "desc"),
+      where("author", "==", "Huy"),
+    );
+    onSnapshot(q, (snapshot) => {
+      let posts = [];
+      snapshot.docs.forEach((doc) => {
+        posts.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+      console.log("query posts: ", posts);
+    });
+  });
   return (
     <div className="p-10">
       <div className="w-full max-w-[500px] mx-auto bg-white shadow-lg p-5">
