@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   getAuth,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "./firebase-config";
 
@@ -13,6 +14,15 @@ const FirebaseAuth = () => {
     password: "",
   });
   const [userInfo, setUserInfo] = useState("");
+  useEffect(() => {
+    // Setup the listener
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUserInfo(currentUser);
+    });
+
+    // Cleanup subscription on unmount
+    // return () => unsubscribe();
+  }, []); // Empty dependency array - only run once on mount
   const handleInputChange = (e) => {
     setValues({
       ...values,
@@ -29,14 +39,13 @@ const FirebaseAuth = () => {
       values.email,
       values.password
     );
-    if (user) {
-      setUserInfo(user);
-    }
     console.log("user: ", user);
-    console.log("create user successfully");
+  };
+  const handleSignOut = () => {
+    signOut(auth);
   };
   return (
-    <div>
+    <div className="p-10">
       <div className="w-full max-w-[500px] mx-auto bg-white shadow-lg p-5">
         <form action="" className="mb-10" onSubmit={handleCreateUser}>
           <input
@@ -60,6 +69,15 @@ const FirebaseAuth = () => {
             Sign up
           </button>
         </form>
+        <div className="mt-10 flex items-center gap-x-5">
+          <span>{userInfo?.email}</span>
+          <button
+            className="p-3 bg-purple-500 text-white text-sm font-medium rounded-lg"
+            onClick={handleSignOut}
+          >
+            Sign out
+          </button>
+        </div>
       </div>
     </div>
   );
