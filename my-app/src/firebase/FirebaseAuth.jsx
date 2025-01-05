@@ -5,14 +5,14 @@ import {
   signOut,
   getAuth,
 } from "firebase/auth";
+import { auth } from "./firebase-config";
 
 const FirebaseAuth = () => {
-  const auth = getAuth();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-
+  const [userInfo, setUserInfo] = useState("");
   const handleInputChange = (e) => {
     setValues({
       ...values,
@@ -22,8 +22,18 @@ const FirebaseAuth = () => {
   };
   console.log("values: ", values);
 
-  const handleCreateUser = (e) => {
+  const handleCreateUser = async (e) => {
     e.preventDefault();
+    const user = await createUserWithEmailAndPassword(
+      auth,
+      values.email,
+      values.password
+    );
+    if (user) {
+      setUserInfo(user);
+    }
+    console.log("user: ", user);
+    console.log("create user successfully");
   };
   return (
     <div>
