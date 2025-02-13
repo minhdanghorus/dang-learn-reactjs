@@ -2,18 +2,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(189, 225, 122);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .header_text {
     font-family: 'Nunito';
-    font-size: 50px;
+    font-size: clamp(20px, 4vw, 40px); /* Reduced font size */
     font-weight: bold;
     color: white;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0px;
+    word-wrap: break-word;
+}
+
+.header_text a {
+    display: inline-block;
+    word-break: break-word; /* Changed from break-all to break-word */
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 .gif_container {
@@ -22,12 +33,18 @@ body {
     align-items: center;
 }
 
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+}
+
 .valentine-message {
     color: #FF69B4;
-    font-size: 1.5em;
+    font-size: clamp(16px, 4vw, 1.5em);
     text-align: center;
     margin: 20px 0;
     animation: pulse 2s infinite;
+    padding: 0 10px;
 }
 
 .love-quote {
@@ -35,4 +52,20 @@ body {
     font-style: italic;
     text-align: center;
     margin-top: 30px;
+    font-size: clamp(14px, 3vw, 1.2em);
+}
+
+@media screen and (max-width: 480px) {
+    .header_text {
+        font-size: clamp(16px, 3.5vw, 24px); /* Smaller font size for mobile */
+        padding: 0 10px;
+    }
+
+    .header_text a {
+        font-size: 0.9em; /* Slightly smaller font for email */
+    }
+
+    .container {
+        padding: 0 15px;
+    }
 }
